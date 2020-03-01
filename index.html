@@ -16,26 +16,51 @@
     <!-- Moment.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
     <title>Day Planner</title>
 </head>
 <body>
 
+    <!-- Header ------------------------------------------------------------------------------------>
     <header class="jumbotron">
-        <h1 class="display-3">Work Day Scheduler</h1>
-        <p class="lead">Schedule your work life, one day at a time.</p>
+        <h1 class="display-3">It's Your Schedule</h1>
+        <p class="lead">Just take it one day at a time.</p>
         <p id="currentDay" class="lead"></p>
     </header>
+    <!-- ---------------------------------------------------------------------------------------- -->
 
+    <!-- Main Page Contents --------------------------------------------------------------------- -->
     <main class="container">
-        <!-- Timeblocks go here -->
+        
+        <!-- Time Blocks -->
+        <div class="input-group my-1">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Hour</span>
+            </div>
+            <textarea class="form-control" rows="3" aria-label="Textarea with dropdown"></textarea>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Save</a>
+                    <a class="dropdown-item" href="#">Delete</a>
+                </div>
+            </div>
+        </div>
+
     </main>
+    <!-- ---------------------------------------------------------------------------------------- -->   
 
 
 
+      
+    <!-- Popper.js, must be included before Bootstrap's js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+    <!-- Bootstrap's javascript file that allows the dropdown menu to work  -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      
     <!-- AJAX -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
