@@ -11,17 +11,7 @@ $(document).ready(function() {
     const getCurrentHour = function() {
 
         let currentHour = now.hour();
-        console.log(currentHour);
     };
-
-    // run through loop to set hours of each time block
-    const setHour = function() {
-
-        let hour = now.hour(7);
-        console.log(hour.format("hh:mm a"));
-
-        $("#hour").html(hour.format("h:00 a"));
-    }
 
     // clone basic time block with nothing extra
     const makeTimeBlocks = function() {
@@ -40,10 +30,37 @@ $(document).ready(function() {
     // fill information for each time block
     const fillTimeBlocks = function() {
 
-        // array of time blocks elements
-        let blocks = $(".time-block").toArray();
+        // index for hour of the day
+        let index = 7;                      
 
-        console.log(blocks);
+        // loop through each time block
+        $(".time-block").each(function() {
+
+            // local variables
+            let hour = now.hour(index);
+            let hourClass = $(this).find($(".hour"));
+
+            // display our
+            hourClass.html(hour.format("h:00 a"));
+
+            // display past, present, or future class
+            if (hour.isBefore(now)) {
+                // assign past class
+                
+            } else if (hour.isAfter(now)) {
+                // assign future class
+
+            } else {
+                // assign present class
+            }
+
+
+            index++;
+        });
+
+
+        // fill event information here, grabbed from local storage
+
     }
 
 
@@ -63,8 +80,7 @@ $(document).ready(function() {
     // }
 
     /**************************** FUNCTION CALLS ****************************/
-    getCurrentHour();
-    setHour();
+
     makeTimeBlocks();
     fillTimeBlocks();
 

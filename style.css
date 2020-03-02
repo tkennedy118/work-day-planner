@@ -22,3 +22,8 @@ body {
     margin-bottom: 2px;
 }
 
+.hour {
+    width: 96px;
+    justify-content: flex-end;
+}
+
