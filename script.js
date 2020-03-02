@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-    let hrStart     = 16;
-    let hrEnd       = 23;
+    let hrStart     = 7;
+    let hrEnd       = 17;
     let now         = moment();
 
     /****************************** FUNCTIONS *******************************/
