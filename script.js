@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-    let dayStart    = 7;
-    let dayEnd      = 17;
+    let hrStart     = 10;
+    let hrEnd       = 23;
     let now         = moment();
 
     $("#currentDay").html(now.format("ddd, MMMM Do YYYY"));
@@ -17,7 +17,7 @@ $(document).ready(function() {
     const makeTimeBlocks = function() {
 
         // runs for each hour of the day
-        for (var i = dayStart; i < dayEnd; i++) {
+        for (var i = hrStart; i < hrEnd; i++) {
 
             let clone = $(".time-block:last").clone();
 
@@ -31,33 +31,35 @@ $(document).ready(function() {
     const fillTimeBlocks = function() {
 
         // index for hour of the day
-        let index = 7;                      
+        let index = hrStart;                      
 
         // loop through each time block
         $(".time-block").each(function() {
 
             // local variables
-            let hour = now.hour(index);
-            let hourClass = $(this).find($(".hour"));
+            let hour = moment().hour(index);
+            let hourArea = $(this).find($(".hour-area"));
+            let eventArea = $(this).find($(".event-area"));
 
-            // display our
-            hourClass.html(hour.format("h:00 a"));
+            // display hour
+            hourArea.html(hour.format("h:00 a"));
 
             // display past, present, or future class
-            if (hour.isBefore(now)) {
+            if (hour.isBefore(now, "hour")) {
                 // assign past class
+                eventArea.addClass("past");
                 
-            } else if (hour.isAfter(now)) {
+            } else if (hour.isAfter(now, "hour")) {
                 // assign future class
+                eventArea.addClass("future");
 
             } else {
                 // assign present class
+                eventArea.addClass("present");
             }
-
 
             index++;
         });
-
 
         // fill event information here, grabbed from local storage
 
@@ -65,48 +67,9 @@ $(document).ready(function() {
 
 
 
-
-    // const setHours = function() {
-        
-    //     // work day length
-    //     let dayLength = dayEnd - dayStart;
-    //     let hour = 
-
-    //     // set hours 7:00am - 5:00pm
-    //     for (var i = dayStart; i <= dayLength; i++) {
-            
-
-    //     }
-    // }
-
     /**************************** FUNCTION CALLS ****************************/
 
     makeTimeBlocks();
     fillTimeBlocks();
 
-    // // parsing date time strings *****************************************/
-    // let m = moment();
-
-    // // create from ISO 8601 string
-    // m = moment("2019-05-19");
-
-    // // using a format
-    // m = moment("14/06/2019 4:50PM", "DD/MM/YYYY h:mmA");
-
-    // console.log(m.toString());
-
-
-
-    // // getters, setters, min/max *****************************************/
-
-    // m = moment();
-
-    // // getting units
-    // console.log(m.minutes());
-    // console.log(m.hour());
-    // console.log(m.get("week"));
-
-    // // setting unites
-    // m.minutes(52);
-    // console.log(m.minutes());
 });
