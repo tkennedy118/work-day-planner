@@ -64,13 +64,31 @@ $(document).ready(function() {
         let savedTime = $(this).parents(".time-block").find(".hour-area").text();
         let savedText = $(this).parents(".time-block").find(".event-area").val();
 
-        // add to local storage
-        localStorage.setItem(savedTime, savedText);
+        // only delete if content exists
+        if (saveText !== "") {
+
+            // add to local storage
+            localStorage.setItem(savedTime, savedText);
+        }
+    }
+
+    // FUNCTION: delete event information from local storage and textarea
+    const deleteEvents = function() {
+
+        // time and text corresponsing with selected delete button
+        let savedTime = $(this).parents(".time-block").find(".hour-area").text();
+        let savedText = $(this).parents(".time-block").find(".event-area");
+
+        // remove them
+        localStorage.removeItem(savedTime);
+        savedText.val("");
     }
 
     /**************************** EVENT HANDLERS ****************************/
 
     $(".btn-save").on("click", saveEvents);
+
+    $(".btn-delete").on("click", deleteEvents);
 
 
     /**************************** FUNCTION CALLS ****************************/
