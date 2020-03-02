@@ -37,6 +37,9 @@ $(document).ready(function() {
             let hourArea = $(this).find($(".hour-area"));
             let eventArea = $(this).find($(".event-area"));
 
+            // may or may not exist, null if it doesn't
+            let local = localStorage.getItem(hour.format("h:00 a"));
+
             // display hour
             hourArea.html(hour.format("h:00 a"));
 
@@ -52,6 +55,9 @@ $(document).ready(function() {
             }
 
             // fill event information here, grabbed from local storage
+            if (local !== null) {
+                eventArea.val(local);
+            }
 
             index++;
         });
@@ -65,7 +71,7 @@ $(document).ready(function() {
         let savedText = $(this).parents(".time-block").find(".event-area").val();
 
         // only delete if content exists
-        if (saveText !== "") {
+        if (savedText !== "") {
 
             // add to local storage
             localStorage.setItem(savedTime, savedText);
@@ -95,5 +101,4 @@ $(document).ready(function() {
 
     initTimeInfo();
     displayTimeInfo();
-
 });
