@@ -6,12 +6,7 @@ $(document).ready(function() {
 
     /****************************** FUNCTIONS *******************************/
 
-    const getCurrentHour = function() {
-
-        let currentHour = now.hour();
-    };
-
-    // clone basic time block with nothing extra
+    // Function: clone basic time block with nothing extra
     const initTimeInfo = function() {
 
         // get current day
@@ -20,7 +15,7 @@ $(document).ready(function() {
         // runs for each hour of the day
         for (var i = hrStart; i < hrEnd; i++) {
 
-            let clone = $(".time-block:last").clone();
+            let clone = $(".time-block:last").clone(true, true);
 
             // append time blocks
             $(".container").append(clone);
@@ -28,7 +23,7 @@ $(document).ready(function() {
         }
     }
 
-    // fill information for each time block
+    // Function: fill information for each time block
     const displayTimeInfo = function() {
 
         // index for hour of the day
@@ -61,6 +56,21 @@ $(document).ready(function() {
             index++;
         });
     }
+
+    // Function: save event information from textarea to local storage
+    const saveEvents = function() {
+
+        // time and text corresponding with selected save button
+        let savedTime = $(this).parents(".time-block").find(".hour-area").text();
+        let savedText = $(this).parents(".time-block").find(".event-area").val();
+
+        // add to local storage
+        localStorage.setItem(savedTime, savedText);
+    }
+
+    /**************************** EVENT HANDLERS ****************************/
+
+    $(".btn-save").on("click", saveEvents);
 
 
     /**************************** FUNCTION CALLS ****************************/
