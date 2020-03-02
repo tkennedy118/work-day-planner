@@ -27,3 +27,18 @@ body {
     justify-content: flex-end;
 }
 
+.past {
+    background-color: #8b8b8b;
+    color: #fff;
+  }
+  
+.present {
+    background-color: #509ee7;
+    color: #fff;
+  }
+  
+.future {
+    background-color: #eee;
+    color: #333;
+  }
+
