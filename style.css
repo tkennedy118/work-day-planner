@@ -48,3 +48,13 @@ body {
     color: #fff;
   }
 
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #eee;
+    background-color: #333;
+    height: 64px;
+    width: 100%;
+    margin-top: 8px;
+  }
