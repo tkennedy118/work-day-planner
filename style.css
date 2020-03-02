@@ -22,13 +22,17 @@ body {
     margin-bottom: 2px;
 }
 
-.hour {
+.hour-area {
     width: 96px;
     justify-content: flex-end;
 }
 
+.event-area {
+    text-align: center;
+}
+
 .past {
-    background-color: #8b8b8b;
+    background-color: #cacaca;
     color: #fff;
   }
   
@@ -38,7 +42,7 @@ body {
   }
   
 .future {
-    background-color: #eee;
-    color: #333;
+    background-color: #a7d4ff;
+    color: #fff;
   }
 

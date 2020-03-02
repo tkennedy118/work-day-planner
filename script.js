@@ -1,10 +1,8 @@
 $(document).ready(function() {
 
-    let hrStart     = 10;
+    let hrStart     = 16;
     let hrEnd       = 23;
     let now         = moment();
-
-    $("#currentDay").html(now.format("ddd, MMMM Do YYYY"));
 
     /****************************** FUNCTIONS *******************************/
 
@@ -14,7 +12,10 @@ $(document).ready(function() {
     };
 
     // clone basic time block with nothing extra
-    const makeTimeBlocks = function() {
+    const initTimeInfo = function() {
+
+        // get current day
+        $("#currentDay").html(now.format("ddd, MMMM Do YYYY"));
 
         // runs for each hour of the day
         for (var i = hrStart; i < hrEnd; i++) {
@@ -28,7 +29,7 @@ $(document).ready(function() {
     }
 
     // fill information for each time block
-    const fillTimeBlocks = function() {
+    const displayTimeInfo = function() {
 
         // index for hour of the day
         let index = hrStart;                      
@@ -46,30 +47,25 @@ $(document).ready(function() {
 
             // display past, present, or future class
             if (hour.isBefore(now, "hour")) {
-                // assign past class
                 eventArea.addClass("past");
                 
             } else if (hour.isAfter(now, "hour")) {
-                // assign future class
                 eventArea.addClass("future");
 
             } else {
-                // assign present class
                 eventArea.addClass("present");
             }
 
+            // fill event information here, grabbed from local storage
+
             index++;
         });
-
-        // fill event information here, grabbed from local storage
-
     }
-
 
 
     /**************************** FUNCTION CALLS ****************************/
 
-    makeTimeBlocks();
-    fillTimeBlocks();
+    initTimeInfo();
+    displayTimeInfo();
 
 });
