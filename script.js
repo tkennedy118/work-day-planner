@@ -1,8 +1,11 @@
 $(document).ready(function() {
 
-    let hrStart     = 7;
-    let hrEnd       = 17;
+    // global variables
+    let hrStart     = 18;
+    let hrEnd       = 23;
     let now         = moment();
+    let day         = now.format("")
+
 
     /****************************** FUNCTIONS *******************************/
 
@@ -19,21 +22,17 @@ $(document).ready(function() {
 
             // append time blocks
             $(".container").append(clone);
-            
         }
     }
 
-    // Function: fill information for each time block
-    const displayTimeInfo = function() {
-
-        // index for hour of the day
-        let index = hrStart;                      
+    // Function: fill hour for each block and get local storage
+    const displayTimeInfo = function() {                   
 
         // loop through each time block
-        $(".time-block").each(function() {
+        $(".time-block").each(function(index, value) {
 
             // local variables
-            let hour = moment().hour(index);
+            let hour = moment().hour(index + hrStart);
             let hourArea = $(this).find($(".hour-area"));
             let eventArea = $(this).find($(".event-area"));
 
@@ -90,6 +89,48 @@ $(document).ready(function() {
         savedText.val("");
     }
 
+    // FUNCTION: update text area classes and local storage info
+    const updateTimeInfo = function() {
+
+        // run every 6 seconds
+        var timer = setInterval( function() {
+
+            // loop through each time block
+            $(".time-block").each(function(index, value) {
+    
+                // local variables
+                let hour = moment().hour(index + hrStart);
+                let eventArea = $(this).find($(".event-area"));
+    
+                // remove past, present, and future classes
+                eventArea.removeClass("past present future");
+    
+                // display past, present, or future class
+                if (hour.isBefore(now, "hour")) {
+                    eventArea.addClass("past");
+                    
+                } else if (hour.isAfter(now, "hour")) {
+                    eventArea.addClass("future");
+    
+                } else {
+                    eventArea.addClass("present");
+                }
+
+                // end of day
+                if (moment().format("h:mm a") === "12:00 am") {
+                    
+                    // clear local storage and event areas
+                    localStorage.clear();
+                    eventArea.val("");
+                }
+
+            });
+
+
+        }, 6000);
+    }
+    
+
     /**************************** EVENT HANDLERS ****************************/
 
     $(".btn-save").on("click", saveEvents);
@@ -101,4 +142,5 @@ $(document).ready(function() {
 
     initTimeInfo();
     displayTimeInfo();
-});
+    updateTimeInfo();
+})
