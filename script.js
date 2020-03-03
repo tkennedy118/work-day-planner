@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
     // global variables
-    let hrStart     = 18;
-    let hrEnd       = 23;
+    let hrStart     = 7;
+    let hrEnd       = 17;
     let now         = moment();
     let day         = now.format("")
 

@@ -31,22 +31,23 @@ body {
 
 .event-area {
     text-align: center;
+    white-space: pre-wrap;
 }
 
 .past {
     background-color: #cacaca;
-    color: #fff;
-  }
-  
+    color: #777;
+} 
+
 .present {
+    background-color: #3fc290;
+    color: #fff;
+}
+
+.future {
     background-color: #509ee7;
     color: #fff;
-  }
-  
-.future {
-    background-color: #a7d4ff;
-    color: #fff;
-  }
+}
 
 .footer {
     display: flex;
@@ -57,4 +58,17 @@ body {
     height: 64px;
     width: 100%;
     margin-top: 8px;
-  }
+}
+
+.input-group-prepend {
+    border-style: inset;
+    border-top-left-radius: 5px;
+}
+
+.btn-save:active {
+    background-color: #3fc290;
+}
+
+.btn-delete:active {
+    background-color: #db3a3a;
+}
