@@ -4,8 +4,6 @@ $(document).ready(function() {
     let hrStart     = 7;
     let hrEnd       = 17;
     let now         = moment();
-    let day         = now.format("")
-
 
     /****************************** FUNCTIONS *******************************/
 

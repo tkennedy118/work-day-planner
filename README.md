@@ -12,4 +12,4 @@ This is a simple day planner application that allows users to save information f
 * style.css
 
 ## Screenshots
-coming soon.
+![work-day-planner](resources/planner.png)
